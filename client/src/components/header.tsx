@@ -1,41 +1,27 @@
-'use client'
-import { useAppContext } from '@/app/app-provider'
-import ButtonLogout from '@/components/button-logout'
-import { ModeToggle } from '@/components/mode-toggle'
-import Link from 'next/link'
+import Link from "next/link";
+import { ModeToggle } from "./mode-toggle";
 
-export default function Header() {
-  const { user } = useAppContext()
+const Header = () => {
   return (
-    <div className='flex space-x-4'>
-      <ul className='flex space-x-4'>
+    <div className="flex gap-4">
+      <ul>
         <li>
-          <Link href='/products'>Sản phẩm</Link>
+          <Link href="/login">Đăng nhập</Link>
         </li>
-
-        {user ? (
-          <>
-            <li>
-              <Link href={'/me'}>
-                Xin chào <strong>{user.name}</strong>
-              </Link>
-            </li>
-            <li>
-              <ButtonLogout />
-            </li>
-          </>
-        ) : (
-          <>
-            <li>
-              <Link href='/login'>Đăng nhập</Link>
-            </li>
-            <li>
-              <Link href='/register'>Đăng ký</Link>
-            </li>
-          </>
-        )}
+      </ul>
+      <ul>
+        <li>
+          <Link href="/register">Đăng kí</Link>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <Link href="/mee">Profile</Link>
+        </li>
       </ul>
       <ModeToggle />
     </div>
-  )
-}
+  );
+};
+
+export default Header;
